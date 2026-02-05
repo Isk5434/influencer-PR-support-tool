@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagramインフルエンサーのための化粧品PR × 薬機法AIチェック</title>
+    <meta name="description" content="#PR投稿を、安心して任せられる。薬機法に配慮したInstagram投稿文を自動生成。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <!-- Left Column: Concept -->
+                <div class="hero-left fade-in">
+                    <h1 class="hero-title">
+                        Instagramインフルエンサーのための<br>
+                        <span class="gradient-text">化粧品PR × 薬機法AIチェック</span>
+                    </h1>
+                    <p class="hero-subtitle">#PR投稿を、安心して任せられる。</p>
+                    <p class="hero-description">
+                        AIが薬機法に配慮した投稿文を自動生成。<br>
+                        インフルエンサーも企業も、安心してPR投稿を任せられる新しいソリューションです。
+                    </p>
+                    <button class="cta-button" id="generateBtn">
+                        <span class="button-text">投稿文を生成する</span>
+                        <span class="button-loading">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+                    </button>
+                </div>
+
+                <!-- Right Column: Demo Display -->
+                <div class="hero-right fade-in-delay">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="instagram-header">
+                                <div class="profile-info">
+                                    <div class="profile-pic"></div>
+                                    <span class="username">beauty_influencer</span>
+                                </div>
+                            </div>
+                            <div class="post-content" id="postCarousel">
+                                <!-- Post slides will be dynamically inserted -->
+                            </div>
+                            <div class="post-footer">
+                                <div class="compliance-badge">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M13.5 4.5L6 12L2.5 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    薬機法配慮済み
+                                </div>
+                                <div class="post-tags">
+                                    <span class="tag">Instagram</span>
+                                    <span class="tag">インフルエンサー</span>
+                                    <span class="tag">#PR</span>
+                                </div>
+                                <button class="copy-button" id="copyBtn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    コピー
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Gallery Section -->
+    <section class="examples-section">
+        <div class="container">
+            <h2 class="section-title fade-in">生成例一覧</h2>
+            <p class="section-subtitle fade-in">様々なカテゴリと口調に対応した投稿文を自動生成</p>
+            
+            <div class="examples-grid">
+                <!-- Example Card 1 -->
+                <div class="example-card fade-in-delay">
+                    <div class="card-header">
+                        <span class="category-badge lipstick">リップスティック</span>
+                        <span class="risk-badge low">リスク: 低</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="example-text">
+                            今日のリップは @brandname の新作💄✨<br><br>
+                            
+                            つけた瞬間、唇がふっくら見える気がして嬉しい🥰<br>
+                            発色も綺麗で、1日中色持ちが良かったです！<br><br>
+                            
+                            気になる方はぜひチェックしてみてね💕<br><br>
+                            
+                            #PR #コスメ好きさんと繋がりたい #今日のメイク
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tone-label">口調: フレンドリー</span>
+                    </div>
+                </div>
+
+                <!-- Example Card 2 -->
+                <div class="example-card fade-in-delay-2">
+                    <div class="card-header">
+                        <span class="category-badge skincare">スキンケアセラム</span>
+                        <span class="risk-badge low">リスク: 低</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="example-text">
+                            @brandname のセラムを使い始めました🌿<br><br>
+                            
+                            テクスチャーがとても軽くて、肌にすっと馴染みます。<br>
+                            使用感が心地よく、毎日のスキンケアが楽しみになりました✨<br><br>
+                            
+                            詳しくはプロフィールのリンクからご覧ください。<br><br>
+                            
+                            #PR #スキンケア #美容好きな人と繋がりたい
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tone-label">口調: 丁寧</span>
+                    </div>
+                </div>
+
+                <!-- Example Card 3 -->
+                <div class="example-card fade-in-delay-3">
+                    <div class="card-header">
+                        <span class="category-badge eyeshadow">アイシャドウパレット</span>
+                        <span class="risk-badge low">リスク: 低</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="example-text">
+                            @brandname の新作パレット使ってみた👀💫<br><br>
+                            
+                            色の組み合わせが可愛すぎて、毎日違うメイクを楽しんでる！<br>
+                            粉質も柔らかくて使いやすいよ〜🎨<br><br>
+                            
+                            気になったらストーリーズもチェックしてね！<br><br>
+                            
+                            #PR #アイメイク #コスメレビュー
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tone-label">口調: カジュアル</span>
+                    </div>
+                </div>
+
+                <!-- Example Card 4 -->
+                <div class="example-card fade-in-delay-4">
+                    <div class="card-header">
+                        <span class="category-badge foundation">ベースメイク</span>
+                        <span class="risk-badge low">リスク: 低</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="example-text">
+                            @brandname のファンデーション、使用感をレビュー🌸<br><br>
+                            
+                            軽いつけ心地で、肌に優しい使用感が気に入っています。<br>
+                            ナチュラルな仕上がりで、普段使いにぴったりでした💕<br><br>
+                            
+                            詳細はプロフィールリンクから✨<br><br>
+                            
+                            #PR #ベースメイク #ファンデーション
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="tone-label">口調: 丁寧</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M16.5 5.5L7.5 14.5L3.5 10.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        コピーしました
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
