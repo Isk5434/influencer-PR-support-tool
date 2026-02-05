@@ -38,7 +38,7 @@ let carouselInterval;
 // Initialize carousel
 function initCarousel() {
     const carousel = document.getElementById('postCarousel');
-    
+
     // Create slides
     posts.forEach((post, index) => {
         const slide = document.createElement('div');
@@ -47,7 +47,7 @@ function initCarousel() {
         slide.textContent = post.text;
         carousel.appendChild(slide);
     });
-    
+
     // Start auto-rotation
     startCarousel();
 }
@@ -68,7 +68,7 @@ function stopCarousel() {
 function nextSlide() {
     const slides = document.querySelectorAll('.post-slide');
     slides[currentSlide].classList.remove('active');
-    
+
     currentSlide = (currentSlide + 1) % posts.length;
     slides[currentSlide].classList.add('active');
 }
@@ -76,11 +76,11 @@ function nextSlide() {
 // Copy to clipboard functionality
 function setupCopyButton() {
     const copyBtn = document.getElementById('copyBtn');
-    
+
     copyBtn.addEventListener('click', () => {
         const activeSlide = document.querySelector('.post-slide.active');
         const textToCopy = activeSlide.textContent;
-        
+
         // Copy to clipboard
         navigator.clipboard.writeText(textToCopy).then(() => {
             showToast();
@@ -94,7 +94,7 @@ function setupCopyButton() {
 function showToast() {
     const toast = document.getElementById('toast');
     toast.classList.add('show');
-    
+
     setTimeout(() => {
         toast.classList.remove('show');
     }, 2000);
@@ -103,18 +103,18 @@ function showToast() {
 // Generate button functionality
 function setupGenerateButton() {
     const generateBtn = document.getElementById('generateBtn');
-    
+
     generateBtn.addEventListener('click', () => {
         // Add loading state
         generateBtn.classList.add('loading');
-        
+
         // Simulate AI generation (2 seconds)
         setTimeout(() => {
             generateBtn.classList.remove('loading');
-            
+
             // Move to next slide to show "new" generated content
             nextSlide();
-            
+
             // Restart carousel timer
             stopCarousel();
             startCarousel();
@@ -128,7 +128,7 @@ function setupScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -137,10 +137,27 @@ function setupScrollAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Observe example cards
     const cards = document.querySelectorAll('.example-card');
     cards.forEach(card => observer.observe(card));
+}
+
+// Mouse Parallax for Background Circles
+function setupParallax() {
+    document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        const circles = document.querySelectorAll('.circle');
+        circles.forEach((circle, index) => {
+            const speed = (index + 1) * 20;
+            const x = (window.innerWidth - mouseX * speed) / 100;
+            const y = (window.innerHeight - mouseY * speed) / 100;
+
+            circle.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
 }
 
 // Initialize everything when DOM is loaded
@@ -149,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCopyButton();
     setupGenerateButton();
     setupScrollAnimations();
+    setupParallax();
 });
 
 // Pause carousel when user hovers over phone mockup
